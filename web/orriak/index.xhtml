@@ -1,0 +1,66 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+
+<h:body>
+
+   <h:form>
+
+
+      <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+      <p:dialog header="Login" widgetVar="dlg" resizable="false" visible="true">
+         <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel for="userNAN" value="NAN Zenbakia:" />
+            <p:inputText id="userNAN" value="#{login.nanzbkia}" required="true" label="userNAN" />
+
+            <h:outputLabel for="password" value="Pasahitza:" />
+            <p:password id="password" value="#{login.password}" required="true" label="password" />
+
+            <f:facet name="footer">
+
+               <h:commandButton value="Login" update="growl" action="#{login.loginEgin}" />
+            </f:facet>
+         </h:panelGrid>
+      </p:dialog>
+   </h:form>
+
+   <h:form>
+
+
+      <p:growl id="growl2" sticky="true" showDetail="true" life="3000" />
+
+      <p:dialog header="Erregistratu" widgetVar="dlg" resizable="false" visible="true">
+         <h:panelGrid columns="1" cellpadding="3">
+            <h:outputLabel for="nan" value="NAN:" />
+            <p:inputText id="nan" value="#{login.nanzbkia}" required="true" label="nan" />
+
+            <h:outputLabel for="username" value="Izena:" />
+            <p:inputText id="username" value="#{login.username}" required="false" label="username" />
+
+            <h:outputLabel for="surname" value="Abizena:" />
+            <p:inputText id="surname" value="#{login.surname}" required="false" label="surname" />
+
+            <h:outputLabel for="password" value="Pasahitza:" />
+            <p:password id="passwordErregistratu" value="#{login.password}" required="true" label="password" />
+
+            <h:outputLabel for="phone" value="Telefonoa:" />
+            <p:inputText id="phone" value="#{login.phone}" required="false" label="phone" />
+
+            <f:facet name="footer">
+
+               <h:commandButton value="Sign In" update="growl" action="#{login.SignIn}" />
+            </f:facet>
+         </h:panelGrid>
+      </p:dialog>
+   </h:form>
+
+
+</h:body>
+</html>
