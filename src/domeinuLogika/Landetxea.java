@@ -9,6 +9,7 @@ import javax.persistence.Id;
 @Entity
 public class Landetxea {
     private String owner;
+    private String herria;
     private String helbidea;
     private String izena;
     private int zenbakia;
@@ -18,9 +19,17 @@ public class Landetxea {
     public String getOwner() {
         return owner;
     }
-
     public void setOwner(String owner) {
         this.owner = owner;
+    }
+
+    @Basic
+    @Column(name = "herria")
+    public String getHerria() {
+        return herria;
+    }
+    public void setHerria(String herria) {
+        this.herria = herria;
     }
 
     @Basic
@@ -53,6 +62,8 @@ public class Landetxea {
         this.zenbakia = zenbakia;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -76,4 +87,6 @@ public class Landetxea {
         result = 31 * result + zenbakia;
         return result;
     }
+
+
 }

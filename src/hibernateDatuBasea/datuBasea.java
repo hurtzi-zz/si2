@@ -1,4 +1,6 @@
 package hibernateDatuBasea;
+import domeinuLogika.Erabiltzailea;
+import domeinuLogika.Landetxea;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
@@ -92,4 +94,23 @@ if(results.size()>0){
         }
         return false;
     }
+
+//    public boolean landetxeaDago(Landetxea landetxea) {
+//        Session session = getSession();
+//
+//        try {
+//            String hql = "FROM Landetxea E WHERE E.herria ='"+nanzbkia+"'";
+//            Query query = session.createQuery(hql);
+//            List results = query.list();
+//            if(results.size()>0){
+//                return true;
+//            }
+//        } catch (HibernateException e) {
+//
+//            e.printStackTrace();
+//        } finally {
+//
+//        }
+//        return false;
+//    }
 }

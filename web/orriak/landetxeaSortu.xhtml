@@ -1,0 +1,31 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/oinarria.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+		<div style="align-content: center">
+			<h:panelGrid columns="1" cellpadding="5">
+				<h:outputLabel for="bezeroa" value="Bezeroa:" />
+				<p:inputText id="bezeroa" disabled="true" value="#{saioa.logeatutakoIzena()}" required="true" label="Bezeroa" />
+
+				<h:outputLabel for="izena" value="Landetxearen izena:" />
+				<p:inputText id="izena" value="#{savelande.izena}" required="true" label="izena" />
+
+				<h:outputLabel for="herria" value="Herria:" />
+				<p:inputText id="herria" value="#{savelande.herria}" required="true" label="herria" />
+
+				<h:outputLabel for="helbidea" value="Helbidea:" />
+				<p:inputText id="helbidea" value="#{savelande.kalea}" required="true" label="kalea" />
+
+				<f:facet name="footer">
+					<h:commandButton value="Save" update="growl" action="#{savelande.landetxeaSortu}" />
+				</f:facet>
+			</h:panelGrid>
+		</div>
+
+	</ui:define>
+</ui:composition>
