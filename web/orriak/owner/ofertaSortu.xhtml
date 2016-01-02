@@ -1,0 +1,36 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:p="http://primefaces.org/ui"
+				xmlns:f="http://java.sun.com/jsf/core"
+				template="/templates/oinarria.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+		<div style="align-content: center">
+			<h:panelGrid columns="1" cellpadding="5">
+				<h:outputLabel for="landetxea" value="Landetxea:" />
+				<p:inputText id="landetxea" value="#{saveofertak.landetxea}" required="true" label="landetxea" />
+
+				<!--<h:outputLabel for="hasdata" value="Hasierako data:" />-->
+				<!--<p:calendar id="hasdata" value="#{saveofertak.hasdata}" required="true" pattern="yyyy/MM/dd">-->
+					<!--<p:ajax event="dateSelect" listener="#{calendarView.onDateSelect}" update="msgs" />-->
+				<!--</p:calendar>-->
+
+				<!--<h:outputLabel for="amaidata" value="Amaierako data:" />-->
+				<!--<p:calendar id="amaidata" value="#{saveofertak.amaidata}" required="true" pattern="yyyy/MM/dd">-->
+					<!--<p:ajax event="dateSelect" listener="#{calendarView.onDateSelect}" update="msgs" />-->
+				<!--</p:calendar>-->
+
+				<h:outputLabel for="prezioa" value="Prezioa:" />
+				<p:inputText id="prezioa" value="#{saveofertak.prezioa}" required="true" label="prezioa" />
+
+				<f:facet name="footer">
+					<h:commandButton value="Save" update="growl" action="#{saveofertak.ofertaSortu}" />
+				</f:facet>
+			</h:panelGrid>
+		</div>
+
+
+	</ui:define>
+</ui:composition>

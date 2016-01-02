@@ -13,16 +13,16 @@
 				<p:inputText id="bezeroa" disabled="true" value="#{saioa.logeatutakoIzena()}" required="true" label="Bezeroa" />
 
 				<h:outputLabel for="izena" value="Landetxearen izena:" />
-				<p:inputText id="izena" value="#{savelande.izena}" required="true" label="izena" />
+				<p:inputText id="izena" value="#{ownerlandetxeak.izena}" required="true" label="izena" />
 
 				<h:outputLabel for="herria" value="Herria:" />
-				<p:inputText id="herria" value="#{savelande.herria}" required="true" label="herria" />
+				<p:inputText id="herria" value="#{ownerlandetxeak.herria}" required="true" label="herria" />
 
 				<h:outputLabel for="helbidea" value="Helbidea:" />
-				<p:inputText id="helbidea" value="#{savelande.kalea}" required="true" label="kalea" />
+				<p:inputText id="helbidea" value="#{ownerlandetxeak.kalea}" required="true" label="kalea" />
 
 				<f:facet name="footer">
-					<h:commandButton value="Save" update="growl" action="#{savelande.landetxeaSortu}" />
+					<h:commandButton value="Save" update="growl" action="#{ownerlandetxeak.landetxeaSortu}" />
 				</f:facet>
 			</h:panelGrid>
 		</div>

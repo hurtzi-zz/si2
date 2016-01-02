@@ -1,0 +1,36 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:p="http://primefaces.org/ui"
+				xmlns:f="http://java.sun.com/jsf/core"
+				template="/templates/oinarria.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+		<div style="align-content: center">
+			<h:panelGrid columns="1" cellpadding="5">
+				<h:outputLabel for="bezeroa" value="Bezeroa:" />
+				<p:inputText id="bezeroa" disabled="true" value="#{saioa.logeatutakoIzena()}" required="true" label="Bezeroa" />
+
+				<p:outputLabel for="Erabiltzaileak" value="Aukeratu landetxea: " />
+				<p:selectOneMenu id="Erabiltzaileak" value="#{ownerlandetxeak.aukeratutakoland}" style="width:200px">
+					<f:selectItems value="#{ownerlandetxeak.lortuEtxeakId(saioa.logeatutakoIzena())}" var="land" itemLabel="#{land.izena}" itemValue="#{land.izena}" />
+				</p:selectOneMenu>
+
+				<h:outputLabel for="izena" value="Izen berria:" />
+				<p:inputText id="izena" value="#{ownerlandetxeak.izena}" required="true" label="izena" />
+
+				<h:outputLabel for="herria" value="Herri berria:" />
+				<p:inputText id="herria" value="#{ownerlandetxeak.herria}" required="true" label="herria" />
+
+				<h:outputLabel for="helbidea" value="Helbide berria:" />
+				<p:inputText id="helbidea" value="#{ownerlandetxeak.kalea}" required="true" label="kalea" />
+
+				<f:facet name="footer">
+					<h:commandButton value="Editatu" update="growl" action="#{ownerlandetxeak.editlandetxea}" />
+				</f:facet>
+			</h:panelGrid>
+		</div>
+
+	</ui:define>
+</ui:composition>

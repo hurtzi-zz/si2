@@ -1,0 +1,22 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/oinarria.xhtml">
+	<ui:define name="metadata">
+	</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5" columnClasses="label, value">
+				<p:outputLabel for="Erabiltzaileak" value="Aukeratu landetxea: " />
+				<p:selectOneMenu id="Erabiltzaileak" value="#{ownerlandetxeak.aukeratutakoland}" style="width:200px">
+					<f:selectItems value="#{ownerlandetxeak.lortuEtxeakId(saioa.logeatutakoIzena())}" var="land" itemLabel="#{land.izena}" itemValue="#{land.izena}" />
+				</p:selectOneMenu>
+				<f:facet name="footer">
+					<h:commandButton value="Delete" action="#{ownerlandetxeak.deletelandetxe}" />
+				</f:facet>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

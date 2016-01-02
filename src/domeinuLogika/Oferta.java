@@ -32,6 +32,7 @@ public class Oferta {
 
     public void setHasData(Date hasData) {
         this.hasData = hasData;
+
     }
 
     @Basic
@@ -92,4 +93,7 @@ public class Oferta {
         result = 31 * result + ofertaId;
         return result;
     }
+
+
+
 }

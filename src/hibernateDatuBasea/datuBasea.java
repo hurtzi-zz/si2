@@ -95,6 +95,41 @@ if(results.size()>0){
         return false;
     }
 
+
+    public List lortuEtxeakId(String own) throws Exception {
+        Session session = getSession();
+        try {
+            String hql = "FROM Landetxea L WHERE L.owner ='"+own+"'";
+            Query query = session.createQuery(hql);
+            List results = query.list();
+            return results;
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+        }
+        return null;
+    }
+
+
+    public boolean deletelandetxe(String izena) throws Exception {
+        Session session = getSession();
+        try {
+            Transaction tx = session.beginTransaction();
+            String hql = "delete Landetxea L WHERE L.izena ='"+izena+"'";
+            Query query = session.createQuery(hql);
+            query.executeUpdate();
+            tx.commit();
+            return true;
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+        }
+        return false;
+    }
+
+
+
+
 //    public boolean landetxeaDago(Landetxea landetxea) {
 //        Session session = getSession();
 //

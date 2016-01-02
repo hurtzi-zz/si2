@@ -1,6 +1,5 @@
 package ownerLandetxeak;
 
-import domeinuLogika.Erabiltzailea;
 import domeinuLogika.Landetxea;
 import saioa.saioa;
 
@@ -8,20 +7,22 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @ManagedBean
 @SessionScoped
-public class savelande implements Serializable {
+public class ownerlandetxeak implements Serializable {
 
     private int id;
     private String izena;
     private String herria;
     private String kalea;
     private String bezeroa;
+    private String aukeratutakoland;
 
 
 
@@ -65,6 +66,14 @@ public class savelande implements Serializable {
         this.bezeroa = bezeroa;
     }
 
+    public String getAukeratutakoland() {
+        return aukeratutakoland;
+    }
+
+    public void setAukeratutakoland(String aukeratutakoland) {
+        this.aukeratutakoland = aukeratutakoland;
+    }
+
 
     public String landetxeaSortu() {
         Random rand = new Random();
@@ -95,7 +104,7 @@ public class savelande implements Serializable {
                 message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERREGISTRO OKERRA", "Landetxea dagoeneko db-an dago.");
                 FacesContext.getCurrentInstance().addMessage(null, message);
 
-                return "savelande";
+                return "ownerlandetxeak";
 
             }
 
@@ -106,5 +115,40 @@ public class savelande implements Serializable {
         return "panela";
 
     }
+
+
+    public List lortuEtxeakId (String own){
+
+        try {
+            return hibernateDatuBasea.datuBasea.instantzia().lortuEtxeakId(own);
+        } catch (Exception ex) {
+            Logger.getLogger(ownerlandetxeak.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+
+    public void deletelandetxe(){
+        FacesMessage message;
+        try{
+            hibernateDatuBasea.datuBasea.instantzia().deletelandetxe(aukeratutakoland);
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "ALDAKETA ZUZENA", "Landetxea zuzen ezabatu da.");
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }catch (Exception ex) {
+            Logger.getLogger(ownerlandetxeak.class.getName()).log(Level.SEVERE, null, ex);
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO, "ALDAKETA OKERRA", "Landetxea ez da zuzen ezabatu.");
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }
+    }
+
+    public void editlandetxea(){
+        FacesMessage message;
+        try{
+            hibernateDatuBasea.datuBasea.instantzia().deletelandetxe(aukeratutakoland);
+            landetxeaSortu();
+        }catch (Exception ex) {
+            Logger.getLogger(ownerlandetxeak.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 
 }
