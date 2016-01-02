@@ -9,8 +9,8 @@ import java.sql.Date;
 @Entity
 public class Oferta {
     private int landetxea;
-    private Date hasData;
-    private Date amaiData;
+    private java.sql.Date hasData;
+    private java.sql.Date amaiData;
     private double prezioa;
     private int ofertaId;
 
@@ -26,22 +26,22 @@ public class Oferta {
 
     @Basic
     @Column(name = "HasData")
-    public Date getHasData() {
+    public java.sql.Date getHasData() {
         return hasData;
     }
 
-    public void setHasData(Date hasData) {
+    public void setHasData(java.sql.Date hasData) {
         this.hasData = hasData;
 
     }
 
     @Basic
     @Column(name = "AmaiData")
-    public Date getAmaiData() {
+    public java.sql.Date getAmaiData() {
         return amaiData;
     }
 
-    public void setAmaiData(Date amaiData) {
+    public void setAmaiData(java.sql.Date amaiData) {
         this.amaiData = amaiData;
     }
 

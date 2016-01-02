@@ -1,12 +1,61 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:f="http://java.sun.com/jsf/core"
-	template="/templates/oinarria.xhtml">
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+				xmlns:h="http://java.sun.com/jsf/html"
+				xmlns:p="http://primefaces.org/ui"
+				xmlns:f="http://java.sun.com/jsf/core"
+				template="/templates/oinarria.xhtml">
 	<ui:define name="metadata">
 	</ui:define>
 	<ui:define name="content">
-		EKINTZAK
+		<div style="align-content: center">
+			<h:panelGrid columns="1" cellpadding="5">
+				<p:outputLabel for="Erabiltzaileak" value="Aukeratu landetxea: " />
+				<p:selectOneMenu id="Erabiltzaileak" value="#{ownofertak.aukeratutakoland}" style="width:200px">
+					<f:selectItems value="#{ownerlandetxeak.lortuEtxeakId(saioa.logeatutakoIzena())}" var="land" itemLabel="#{land.izena}" itemValue="#{land.izena}" />
+				</p:selectOneMenu>
+
+				<h:commandButton value="Aukeratua" action="#{ownofertak.setaukera}" />
+
+				<p:separator />
+
+				<p:outputLabel for="ofer" value="Aukeratu oferta: " />
+				<p:selectOneMenu id="ofer" value="#{ownofertak.aukeratutakoofer}" style="width:200px">
+					<f:selectItems value="#{ownofertak.lortuOfertak(ownofertak.aukeratutakoland)}" var="ofer" itemLabel="#{ofer.ofertaId}" itemValue="#{ofer.ofertaId}" />
+				</p:selectOneMenu>
+				<h:commandButton value="Aukeratua" action="#{ownofertak.setaukera}" />
+
+				<p:separator />
+				<h:outputLabel for="hasdata" value="Hasierako data:" />
+				<p:calendar id="hasdata" value="#{ownofertak.hasdata}" required="false" pattern="yyyy/MM/dd">
+					<p:ajax event="dateSelect" listener="#{calendarView.onDateSelect}" update="msgs" />
+				</p:calendar>
+
+				<h:outputLabel for="amaidata" value="Amaierako data:" />
+				<p:calendar id="amaidata" value="#{ownofertak.amaidata}" required="false" pattern="yyyy/MM/dd">
+					<p:ajax event="dateSelect" listener="#{calendarView.onDateSelect}" update="msgs" />
+				</p:calendar>
+
+				<h:outputLabel for="prezioa1" value="Prezioa:" />
+				<p:inputText id="prezioa1" value="#{ownofertak.prezioa}" required="false" label="prezioa1" />
+
+				<p:separator />
+
+				<h:outputLabel for="hasiera" value="Hasiera:" />
+				<p:inputText id="hasiera" disabled="true" value="#{ownofertak.aukeratutakooferhasi}" />
+
+				<h:outputLabel for="amaiera" value="Amaiera:" />
+				<p:inputText id="amaiera" disabled="true" value="#{ownofertak.aukeratutakooferbuk}"  />
+
+				<h:outputLabel for="prezioa" value="Prezioa:" />
+				<p:inputText id="prezioa" disabled="true" value="#{ownofertak.aukeratutakooferprezioa}"  />
+
+
+				<f:facet name="footer">
+					<h:commandButton value="Save" update="growl" action="#{ownofertak.editofer}" />
+				</f:facet>
+			</h:panelGrid>
+		</div>
+
+
 	</ui:define>
 </ui:composition>
